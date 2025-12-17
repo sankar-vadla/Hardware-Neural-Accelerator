@@ -1,13 +1,13 @@
 # Hardware Accelerator for 1D CNN based Time Series Anomaly Detection
 
-## 📌 Project Overview
+##  Project Overview
 This project implements a hardware accelerator for a **1-Dimensional Convolutional Neural Network (1D CNN)** using **Verilog HDL**. Designed for the **Industrial Internet of Things (IIoT)**, this accelerator enables real-time anomaly detection on edge devices (like FPGAs) without relying on cloud processing.
 The system processes time-series vibration data to classify the operational state of industrial motors into three categories:
 1. **Healthy** (Class 0)
 2. **Bearing Fault** (Class 1)
 3. **Rotor Imbalance** (Class 2)
 
-## 🚀 Why Hardware Acceleration?
+##  Why Hardware Acceleration?
 In industrial settings, sensors generate massive amounts of data. Relying solely on the cloud for analysis causes **latency** (delays), consumes **bandwidth**, and raises **security concerns**.
 By building a dedicated circuit (Hardware Accelerator) to run the AI model directly on the device, we achieve:
 * **Low Latency:** Immediate fault detection critical for emergency shutdowns.
@@ -16,7 +16,7 @@ By building a dedicated circuit (Hardware Accelerator) to run the AI model direc
 
 ---
 
-## 🧠 The AI Model Architecture
+##  The AI Model Architecture
 The hardware implements a specific feed-forward neural network designed for short time-series sequences:
 
 1. **Input Layer:** Takes in a sequence of **8 sensor samples**.
@@ -27,10 +27,10 @@ The hardware implements a specific feed-forward neural network designed for shor
 
 ---
 
-## ⚙️ Hardware Architecture & Methodology
+##  Hardware Architecture & Methodology
 The project translates the AI model into digital logic circuits. [cite_start]The design is modular, controlled by **Finite State Machines (FSMs)** to manage the flow of data.
 
-### 📂 Key Verilog Modules
+###  Key Verilog Modules
 * **`cnn_top.v` (Master Controller):**
   This is the "Brain" of the accelerator. It coordinates the entire process by triggering the Convolution layer, moving data through the ReLU activation, triggering the Dense layer, and outputting the final result.
 
@@ -51,7 +51,7 @@ The project translates the AI model into digital logic circuits. [cite_start]The
 
 ---
 
-## 🔄 How It Works (Execution Flow)
+##  How It Works (Execution Flow)
 When the accelerator is started, the `cnn_top` module orchestrates the following pipeline:
 
 1. **Data Loading:** Input sensor data and model weights are loaded into the BRAMs (simulated via testbench).
@@ -62,7 +62,7 @@ When the accelerator is started, the `cnn_top` module orchestrates the following
 
 ---
 
-## 🛠️ Simulation & Verification
+##  Simulation & Verification
 The design was verified using the **Xilinx Vivado Simulator**.
 
 ### Test Strategy
@@ -74,13 +74,13 @@ We created comprehensive testbenches (`cnn_top_tb_comprehensive.v`) that:
 
 ### Results
 The simulation successfully verified the logic for all three cases:
-* ✅ **Case 0:** Correctly identified "Healthy" state.
-* ✅ **Case 1:** Correctly identified "Bearing Fault".
-* ✅ **Case 2:** Correctly identified "Rotor Imbalance".
+*  **Case 0:** Correctly identified "Healthy" state.
+*  **Case 1:** Correctly identified "Bearing Fault".
+*  **Case 2:** Correctly identified "Rotor Imbalance".
 
 ---
 
-## 🔮 Future Scope
+##  Future Scope
 * **Hardware Implementation:** Synthesize the design onto a physical FPGA board (e.g., Xilinx Artix-7/Zynq).
 * **Real-time Inputs:** Integrate an Analog-to-Digital Converter (ADC) to read real vibration sensors.
 * **Processor Integration:** Add an AXI-Lite interface to allow a CPU to communicate with the accelerator.
