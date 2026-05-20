@@ -35,7 +35,7 @@ The project translates the AI model into digital logic circuits. The design is m
   This is the "Brain" of the accelerator. It coordinates the entire process by triggering the Convolution layer, moving data through the ReLU activation, triggering the Dense layer, and outputting the final result.
 
 * **`mac_unit.v` (The Calculator):**
-  A pipelined **Multiply-Accumulate** unit. Since Neural Networks are mostly multiplication and addition, this unit is optimized to do these calculations quickly using a 3-stage pipeline.
+  A pipelined **Multiply-Accumulate** unit. Since Neural Networks are mostly multiplication and addition, this unit is optimized to do these calculations quickly using a 2-stage pipeline.
 
 * **`dual_port_bram.v` (Memory):**
   On-chip memory (Block RAM) used to store input sensor data, network weights (learned parameters), and intermediate features passed between layers.
