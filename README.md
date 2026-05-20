@@ -21,14 +21,14 @@ The hardware implements a specific feed-forward neural network designed for shor
 
 1. **Input Layer:** Takes in a sequence of **8 sensor samples**.
 2. **Conv1D Layer:** Applies filters (kernels) to extract temporal features from the vibration data.
-3. **ReLU Activation:** Removes negative values to introduce non-linearity ($f(x) = max(0, x)$).
+3. **ReLU Activation:** Removes negative values to introduce non-linearity (f(x) = max(0, x)).
 4. **Dense (Fully Connected) Layer:** Maps the features to the final 3 output classes.
 5. **Output:** A classification score indicating the motor's health status.
 
 ---
 
 ##  Hardware Architecture & Methodology
-The project translates the AI model into digital logic circuits. [cite_start]The design is modular, controlled by **Finite State Machines (FSMs)** to manage the flow of data.
+The project translates the AI model into digital logic circuits. The design is modular, controlled by **Finite State Machines (FSMs)** to manage the flow of data.
 
 ###  Key Verilog Modules
 * **`cnn_top.v` (Master Controller):**
